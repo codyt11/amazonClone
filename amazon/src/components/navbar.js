@@ -15,6 +15,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import logo from '../images/logo.png';
+import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -56,6 +59,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  '@media all': {
+    maxHeight: 55,
+  },
+}));
+
+
 export default function PrimarySearchAppBar() {
 
 
@@ -66,18 +76,38 @@ export default function PrimarySearchAppBar() {
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          
+    <Box sx={{ flexGrow: 1, height: 70}}>
+      <AppBar position="static" >
+        <StyledToolbar disableGutters className='styles.customizeToolbar'>    
           <Typography
-            variant="h6"
+            variant="h4"
             noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+          <Box
+            component="img"
+            sx={{
+            pt: 2,
+            ml: 1,
+            height: 70,
+            width: 100,
+            maxHeight: { xs: 233, md: 167 },
+            maxWidth: { xs: 350, md: 250 },
+            }}
+            alt="amazon logo"
+            src={logo}
+          />
           </Typography>
+          <Box sx={{display: 'flex', pt: 2, pb: 2}}>
+            <Box sx={{pt:1.5, pl: 3}}>
+              <RoomOutlinedIcon />
+            </Box>
+            <Box sx={{ }}>
+              <Box sx={{display: 'flex', alignText: 'left', fontSize: 12, fontWeight: 300}}>Hello</Box>
+              <Box sx={{display: 'flex', alignText: 'left', fontSize: 14, fontWeight: 700}}>Select your address</Box>
+            </Box>
+          </Box>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -99,7 +129,7 @@ export default function PrimarySearchAppBar() {
               </Badge>
               <AccountCircle />
           </Box>
-        </Toolbar>
+        </StyledToolbar>
       </AppBar>
     </Box>
   );
